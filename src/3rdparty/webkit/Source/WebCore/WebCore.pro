@@ -33,6 +33,9 @@ contains(DEFINES, ENABLE_WCSS=1) {
     EXTRACSSVALUES += $$PWD/css/WCSSValueKeywords.in
 }
 
+CONFIG(debug, debug|release) {
+    SOURCES += accessibility/AccessibilityAllInOne.cpp
+} else {
 SOURCES += \
     accessibility/AccessibilityImageMapLink.cpp \
     accessibility/AccessibilityMediaControls.cpp \    
@@ -56,7 +59,10 @@ SOURCES += \
     accessibility/AccessibilityTableColumn.cpp \    
     accessibility/AccessibilityTableHeaderContainer.cpp \    
     accessibility/AccessibilityTableRow.cpp \    
-    accessibility/AXObjectCache.cpp \
+    accessibility/AXObjectCache.cpp
+}
+
+SOURCES += \
     bindings/generic/ActiveDOMCallback.cpp \
     bindings/generic/RuntimeEnabledFeatures.cpp
 
@@ -380,6 +386,347 @@ v8 {
         testing/js/WebCoreTestSupport.cpp
 }
 
+CONFIG(debug, debug|release) {
+    SOURCES += \
+        dom/DOMAllInOne.cpp \
+        editing/EditingAllInOne.cpp \
+        html/HTMLElementsAllInOne.cpp \
+        rendering/RenderingAllInOne.cpp \
+        rendering/style/StyleAllInOne.cpp
+} else {
+    SOURCES += \
+        dom/ActiveDOMObject.cpp \
+        dom/Attr.cpp \
+        dom/Attribute.cpp \
+        dom/BeforeProcessEvent.cpp \
+        dom/BeforeTextInsertedEvent.cpp \
+        dom/BeforeUnloadEvent.cpp \
+        dom/CDATASection.cpp \
+        dom/CharacterData.cpp \
+        dom/CheckedRadioButtons.cpp \
+        dom/ChildNodeList.cpp \
+        dom/ClassNodeList.cpp \
+        dom/ClientRect.cpp \
+        dom/ClientRectList.cpp \
+        dom/Clipboard.cpp \
+        dom/ClipboardEvent.cpp \
+        dom/Comment.cpp \
+        dom/CompositionEvent.cpp \
+        dom/ContainerNode.cpp \
+        dom/CSSMappedAttributeDeclaration.cpp \
+        dom/CustomEvent.cpp \
+        dom/DecodedDataDocumentParser.cpp \
+        dom/DeviceMotionController.cpp \
+        dom/DeviceMotionData.cpp \
+        dom/DeviceMotionEvent.cpp \
+        dom/DeviceOrientation.cpp \
+        dom/DeviceOrientationController.cpp \
+        dom/DeviceOrientationEvent.cpp \
+        dom/Document.cpp \
+        dom/DocumentFragment.cpp \
+        dom/DocumentMarkerController.cpp \
+        dom/DocumentOrderedMap.cpp \
+        dom/DocumentParser.cpp \
+        dom/DocumentType.cpp \
+        dom/DOMImplementation.cpp \
+        dom/DOMStringList.cpp \
+        dom/DOMStringMap.cpp \
+        dom/DatasetDOMStringMap.cpp \
+        dom/DynamicNodeList.cpp \
+        dom/EditingText.cpp \
+        dom/Element.cpp \
+        dom/EntityReference.cpp \
+        dom/ErrorEvent.cpp \
+        dom/Event.cpp \
+        dom/EventContext.cpp \
+        dom/EventDispatcher.cpp \
+        dom/EventNames.cpp \
+        dom/EventTarget.cpp \
+        dom/EventQueue.cpp \
+        dom/ExceptionBase.cpp \
+        dom/ExceptionCode.cpp \
+        dom/IconURL.cpp \
+        dom/InputElement.cpp \
+        dom/KeyboardEvent.cpp \
+        dom/MessageChannel.cpp \
+        dom/MessageEvent.cpp \
+        dom/MessagePort.cpp \
+        dom/MessagePortChannel.cpp \
+        dom/MouseEvent.cpp \
+        dom/MouseRelatedEvent.cpp \
+        dom/MutationEvent.cpp \
+        dom/NameNodeList.cpp \
+        dom/Node.cpp \
+        dom/NodeFilterCondition.cpp \
+        dom/NodeFilter.cpp \
+        dom/NodeIterator.cpp \
+        dom/Notation.cpp \
+        dom/OptionGroupElement.cpp \
+        dom/OptionElement.cpp \
+        dom/StaticHashSetNodeList.cpp \
+        dom/OverflowEvent.cpp \
+        dom/PageTransitionEvent.cpp \
+        dom/PendingScript.cpp \
+        dom/PopStateEvent.cpp \
+        dom/Position.cpp \
+        dom/PositionIterator.cpp \
+        dom/ProcessingInstruction.cpp \
+        dom/ProgressEvent.cpp \
+        dom/RegisteredEventListener.cpp \
+        dom/ScopedEventQueue.cpp \
+        dom/ScriptableDocumentParser.cpp \
+        dom/ScriptElement.cpp \
+        dom/ScriptExecutionContext.cpp \
+        dom/ScriptRunner.cpp \
+        dom/SelectElement.cpp \
+        dom/SelectorNodeList.cpp \
+        dom/ShadowRoot.cpp \
+        dom/SpaceSplitString.cpp \
+        dom/StaticNodeList.cpp \
+        dom/StyledElement.cpp \
+        dom/StyleElement.cpp \
+        dom/TagNodeList.cpp \
+        dom/Text.cpp \
+        dom/TextEvent.cpp \
+        dom/Touch.cpp \
+        dom/TouchEvent.cpp \
+        dom/TouchList.cpp \
+        dom/Traversal.cpp \
+        dom/TreeScope.cpp \
+        dom/TreeWalker.cpp \
+        dom/UIEvent.cpp \
+        dom/UIEventWithKeyState.cpp \
+        dom/UserGestureIndicator.cpp \
+        dom/UserTypingGestureIndicator.cpp \
+        dom/ViewportArguments.cpp \
+        dom/WebKitAnimationEvent.cpp \
+        dom/WebKitTransitionEvent.cpp \
+        dom/WheelEvent.cpp \
+        dom/WindowEventContext.cpp \
+        dom/XMLDocumentParser.cpp \
+        editing/AppendNodeCommand.cpp \
+        editing/ApplyBlockElementCommand.cpp \
+        editing/ApplyStyleCommand.cpp \
+        editing/BreakBlockquoteCommand.cpp \
+        editing/CompositeEditCommand.cpp \
+        editing/CreateLinkCommand.cpp \
+        editing/DeleteButtonController.cpp \
+        editing/DeleteButton.cpp \
+        editing/DeleteFromTextNodeCommand.cpp \
+        editing/DeleteSelectionCommand.cpp \
+        editing/EditCommand.cpp \
+        editing/EditingStyle.cpp \
+        editing/Editor.cpp \
+        editing/EditorCommand.cpp \
+        editing/FormatBlockCommand.cpp \
+        editing/htmlediting.cpp \
+        editing/HTMLInterchange.cpp \
+        editing/IndentOutdentCommand.cpp \
+        editing/InsertIntoTextNodeCommand.cpp \
+        editing/InsertLineBreakCommand.cpp \
+        editing/InsertListCommand.cpp \
+        editing/InsertNodeBeforeCommand.cpp \
+        editing/InsertParagraphSeparatorCommand.cpp \
+        editing/InsertTextCommand.cpp \
+        editing/JoinTextNodesCommand.cpp \
+        editing/markup.cpp \
+        editing/MarkupAccumulator.cpp \
+        editing/MergeIdenticalElementsCommand.cpp \
+        editing/ModifySelectionListLevel.cpp \
+        editing/MoveSelectionCommand.cpp \
+        editing/RemoveCSSPropertyCommand.cpp \
+        editing/RemoveFormatCommand.cpp \
+        editing/RemoveNodeCommand.cpp \
+        editing/RemoveNodePreservingChildrenCommand.cpp \
+        editing/ReplaceNodeWithSpanCommand.cpp \
+        editing/ReplaceSelectionCommand.cpp \
+        editing/SelectionController.cpp \
+        editing/SetNodeAttributeCommand.cpp \
+        editing/SmartReplaceICU.cpp \
+        editing/SpellChecker.cpp \
+        editing/SpellingCorrectionController.cpp \
+        editing/SplitElementCommand.cpp \
+        editing/SplitTextNodeCommand.cpp \
+        editing/SplitTextNodeContainingElementCommand.cpp \
+        editing/TextCheckingHelper.cpp \
+        editing/TextIterator.cpp \
+        editing/TypingCommand.cpp \
+        editing/UnlinkCommand.cpp \
+        editing/VisiblePosition.cpp \
+        editing/VisibleSelection.cpp \
+        editing/visible_units.cpp \
+        editing/WrapContentsInDummySpanCommand.cpp \
+        html/HTMLAppletElement.cpp \
+        html/HTMLAreaElement.cpp \
+        html/HTMLBRElement.cpp \
+        html/HTMLBaseElement.cpp \
+        html/HTMLBaseFontElement.cpp \
+        html/HTMLBlockquoteElement.cpp \
+        html/HTMLBodyElement.cpp \
+        html/HTMLButtonElement.cpp \
+        html/HTMLDataListElement.cpp \
+        html/HTMLDetailsElement.cpp \
+        html/HTMLDListElement.cpp \
+        html/HTMLDirectoryElement.cpp \
+        html/HTMLDivElement.cpp \
+        html/HTMLElement.cpp \
+        html/HTMLEmbedElement.cpp \
+        html/HTMLFieldSetElement.cpp \
+        html/HTMLFontElement.cpp \
+        html/HTMLFormControlElement.cpp \
+        html/HTMLFormElement.cpp \
+        html/HTMLFrameElement.cpp \
+        html/HTMLFrameElementBase.cpp \
+        html/HTMLFrameOwnerElement.cpp \
+        html/HTMLFrameSetElement.cpp \
+        html/HTMLHRElement.cpp \
+        html/HTMLHeadElement.cpp \
+        html/HTMLHeadingElement.cpp \
+        html/HTMLHtmlElement.cpp \
+        html/HTMLIFrameElement.cpp \
+        html/HTMLImageElement.cpp \
+        html/HTMLInputElement.cpp \
+        html/HTMLIsIndexElement.cpp \
+        html/HTMLKeygenElement.cpp \
+        html/HTMLLIElement.cpp \
+        html/HTMLLabelElement.cpp \
+        html/HTMLLegendElement.cpp \
+        html/HTMLLinkElement.cpp \
+        html/HTMLMapElement.cpp \
+        html/HTMLMarqueeElement.cpp \
+        html/HTMLMenuElement.cpp \
+        html/HTMLMetaElement.cpp \
+        html/HTMLMeterElement.cpp \
+        html/HTMLModElement.cpp \
+        html/HTMLOListElement.cpp \
+        html/HTMLObjectElement.cpp \
+        html/HTMLOptGroupElement.cpp \
+        html/HTMLOptionElement.cpp \
+        html/HTMLOutputElement.cpp \
+        html/HTMLParagraphElement.cpp \
+        html/HTMLParamElement.cpp \
+        html/HTMLParserErrorCodes.cpp \
+        html/HTMLPlugInImageElement.cpp \
+        html/HTMLPreElement.cpp \
+        html/HTMLProgressElement.cpp \
+        html/HTMLQuoteElement.cpp \
+        html/HTMLScriptElement.cpp \
+        html/HTMLSelectElement.cpp \
+        html/HTMLStyleElement.cpp \
+        html/HTMLSummaryElement.cpp \
+        html/HTMLTableCaptionElement.cpp \
+        html/HTMLTableCellElement.cpp \
+        html/HTMLTableColElement.cpp \
+        html/HTMLTableElement.cpp \
+        html/HTMLTablePartElement.cpp \
+        html/HTMLTableRowElement.cpp \
+        html/HTMLTableSectionElement.cpp \
+        html/HTMLTextAreaElement.cpp \
+        html/HTMLTitleElement.cpp \
+        html/HTMLUListElement.cpp \
+        rendering/AutoTableLayout.cpp \
+        rendering/break_lines.cpp \
+        rendering/BidiRun.cpp \
+        rendering/CounterNode.cpp \
+        rendering/EllipsisBox.cpp \
+        rendering/FixedTableLayout.cpp \
+        rendering/HitTestResult.cpp \
+        rendering/InlineBox.cpp \
+        rendering/InlineFlowBox.cpp \
+        rendering/InlineTextBox.cpp \
+        rendering/LayoutState.cpp \
+        rendering/RenderApplet.cpp \
+        rendering/RenderArena.cpp \
+        rendering/RenderBlock.cpp \
+        rendering/RenderBlockLineLayout.cpp \
+        rendering/RenderBox.cpp \
+        rendering/RenderBoxModelObject.cpp \
+        rendering/RenderBR.cpp \
+        rendering/RenderButton.cpp \
+        rendering/RenderCombineText.cpp \
+        rendering/RenderCounter.cpp \
+        rendering/RenderDetails.cpp \
+        rendering/RenderDetailsMarker.cpp \
+        rendering/RenderEmbeddedObject.cpp \
+        rendering/RenderFieldset.cpp \
+        rendering/RenderFileUploadControl.cpp \
+        rendering/RenderFlexibleBox.cpp \
+        rendering/RenderFrame.cpp \
+        rendering/RenderFrameBase.cpp \
+        rendering/RenderFrameSet.cpp \
+        rendering/RenderHTMLCanvas.cpp \
+        rendering/RenderIFrame.cpp \
+        rendering/RenderImage.cpp \
+        rendering/RenderImageResource.cpp \
+        rendering/RenderImageResourceStyleImage.cpp \
+        rendering/RenderInline.cpp \
+        rendering/RenderLayer.cpp \
+        rendering/RenderLayerCompositor.cpp \
+        rendering/RenderLineBoxList.cpp \
+        rendering/RenderListBox.cpp \
+        rendering/RenderListItem.cpp \
+        rendering/RenderListMarker.cpp \
+        rendering/RenderMarquee.cpp \
+        rendering/RenderMenuList.cpp \
+        rendering/RenderMeter.cpp \
+        rendering/RenderObject.cpp \
+        rendering/RenderObjectChildList.cpp \
+        rendering/RenderPart.cpp \
+        rendering/RenderProgress.cpp \
+        rendering/RenderQuote.cpp \
+        rendering/RenderReplaced.cpp \
+        rendering/RenderReplica.cpp \
+        rendering/RenderRuby.cpp \
+        rendering/RenderRubyBase.cpp \
+        rendering/RenderRubyRun.cpp \
+        rendering/RenderRubyText.cpp \
+        rendering/RenderScrollbar.cpp \
+        rendering/RenderScrollbarPart.cpp \
+        rendering/RenderScrollbarTheme.cpp \
+        rendering/RenderSlider.cpp \
+        rendering/RenderSummary.cpp \
+        rendering/RenderTable.cpp \
+        rendering/RenderTableCell.cpp \
+        rendering/RenderTableCol.cpp \
+        rendering/RenderTableRow.cpp \
+        rendering/RenderTableSection.cpp \
+        rendering/RenderText.cpp \
+        rendering/RenderTextControl.cpp \
+        rendering/RenderTextControlMultiLine.cpp \
+        rendering/RenderTextControlSingleLine.cpp \
+        rendering/RenderTextFragment.cpp \
+        rendering/RenderTheme.cpp \
+        rendering/RenderTreeAsText.cpp \
+        rendering/RenderView.cpp \
+        rendering/RenderWidget.cpp \
+        rendering/RenderWordBreak.cpp \
+        rendering/RootInlineBox.cpp \
+        rendering/ScrollBehavior.cpp \
+        rendering/ShadowElement.cpp \
+        rendering/TransformState.cpp \
+        rendering/style/ContentData.cpp \
+        rendering/style/CounterDirectives.cpp \
+        rendering/style/FillLayer.cpp \
+        rendering/style/KeyframeList.cpp \
+        rendering/style/NinePieceImage.cpp \
+        rendering/style/QuotesData.cpp \
+        rendering/style/RenderStyle.cpp \
+        rendering/style/ShadowData.cpp \
+        rendering/style/StyleBackgroundData.cpp \
+        rendering/style/StyleBoxData.cpp \
+        rendering/style/StyleCachedImage.cpp \
+        rendering/style/StyleFlexibleBoxData.cpp \
+        rendering/style/StyleGeneratedImage.cpp \
+        rendering/style/StyleInheritedData.cpp \
+        rendering/style/StyleMarqueeData.cpp \
+        rendering/style/StyleMultiColData.cpp \
+        rendering/style/StyleRareInheritedData.cpp \
+        rendering/style/StyleRareNonInheritedData.cpp \
+        rendering/style/StyleSurroundData.cpp \
+        rendering/style/StyleTransformData.cpp \
+        rendering/style/StyleVisualData.cpp
+}
+
 SOURCES += \
     css/CSSBorderImageValue.cpp \
     css/CSSCanvasValue.cpp \
@@ -445,173 +792,12 @@ SOURCES += \
     css/WebKitCSSKeyframesRule.cpp \
     css/WebKitCSSMatrix.cpp \
     css/WebKitCSSTransformValue.cpp \
-    dom/ActiveDOMObject.cpp \
-    dom/Attr.cpp \
-    dom/Attribute.cpp \
-    dom/BeforeProcessEvent.cpp \
-    dom/BeforeTextInsertedEvent.cpp \
-    dom/BeforeUnloadEvent.cpp \
-    dom/CDATASection.cpp \
-    dom/CharacterData.cpp \
-    dom/CheckedRadioButtons.cpp \
-    dom/ChildNodeList.cpp \
-    dom/ClassNodeList.cpp \
-    dom/ClientRect.cpp \
-    dom/ClientRectList.cpp \
-    dom/Clipboard.cpp \
-    dom/ClipboardEvent.cpp \
-    dom/Comment.cpp \
-    dom/CompositionEvent.cpp \
-    dom/ContainerNode.cpp \
-    dom/CSSMappedAttributeDeclaration.cpp \
-    dom/CustomEvent.cpp \
-    dom/DecodedDataDocumentParser.cpp \
-    dom/DeviceMotionController.cpp \
-    dom/DeviceMotionData.cpp \
-    dom/DeviceMotionEvent.cpp \
-    dom/DeviceOrientation.cpp \
-    dom/DeviceOrientationController.cpp \
-    dom/DeviceOrientationEvent.cpp \
-    dom/Document.cpp \
-    dom/DocumentFragment.cpp \
-    dom/DocumentMarkerController.cpp \
-    dom/DocumentOrderedMap.cpp \
-    dom/DocumentParser.cpp \
-    dom/DocumentType.cpp \
-    dom/DOMImplementation.cpp \
-    dom/DOMStringList.cpp \
-    dom/DOMStringMap.cpp \
-    dom/DatasetDOMStringMap.cpp \
-    dom/DynamicNodeList.cpp \
-    dom/EditingText.cpp \
-    dom/Element.cpp \
-    dom/EntityReference.cpp \
-    dom/ErrorEvent.cpp \
-    dom/Event.cpp \
-    dom/EventContext.cpp \
-    dom/EventDispatcher.cpp \
-    dom/EventNames.cpp \
-    dom/EventTarget.cpp \
-    dom/EventQueue.cpp \
-    dom/ExceptionBase.cpp \
-    dom/ExceptionCode.cpp \
-    dom/IconURL.cpp \
-    dom/InputElement.cpp \
-    dom/KeyboardEvent.cpp \
-    dom/MessageChannel.cpp \
-    dom/MessageEvent.cpp \
-    dom/MessagePort.cpp \
-    dom/MessagePortChannel.cpp \
-    dom/MouseEvent.cpp \
-    dom/MouseRelatedEvent.cpp \
-    dom/MutationEvent.cpp \
     dom/NamedNodeMap.cpp \
-    dom/NameNodeList.cpp \
-    dom/Node.cpp \
-    dom/NodeFilterCondition.cpp \
-    dom/NodeFilter.cpp \
-    dom/NodeIterator.cpp \
-    dom/Notation.cpp \
-    dom/OptionGroupElement.cpp \
-    dom/OptionElement.cpp \
-    dom/StaticHashSetNodeList.cpp \
-    dom/OverflowEvent.cpp \
-    dom/PageTransitionEvent.cpp \
-    dom/PendingScript.cpp \
-    dom/PopStateEvent.cpp \
-    dom/Position.cpp \
-    dom/PositionIterator.cpp \
-    dom/ProcessingInstruction.cpp \
-    dom/ProgressEvent.cpp \
     dom/QualifiedName.cpp \
     dom/Range.cpp \
     dom/RawDataDocumentParser.h \
-    dom/RegisteredEventListener.cpp \
-    dom/ScopedEventQueue.cpp \
-    dom/ScriptableDocumentParser.cpp \
-    dom/ScriptElement.cpp \
-    dom/ScriptExecutionContext.cpp \
-    dom/ScriptRunner.cpp \
-    dom/SelectElement.cpp \
-    dom/SelectorNodeList.cpp \
-    dom/ShadowRoot.cpp \
-    dom/SpaceSplitString.cpp \
-    dom/StaticNodeList.cpp \
-    dom/StyledElement.cpp \
-    dom/StyleElement.cpp \
-    dom/TagNodeList.cpp \
-    dom/Text.cpp \
-    dom/TextEvent.cpp \
-    dom/Touch.cpp \
-    dom/TouchEvent.cpp \
-    dom/TouchList.cpp \
-    dom/Traversal.cpp \
-    dom/TreeScope.cpp \
-    dom/TreeWalker.cpp \
-    dom/UIEvent.cpp \
-    dom/UIEventWithKeyState.cpp \
-    dom/UserGestureIndicator.cpp \
-    dom/UserTypingGestureIndicator.cpp \
-    dom/ViewportArguments.cpp \
-    dom/WebKitAnimationEvent.cpp \
-    dom/WebKitTransitionEvent.cpp \
-    dom/WheelEvent.cpp \
-    dom/WindowEventContext.cpp \
-    dom/XMLDocumentParser.cpp \
     dom/XMLDocumentParserQt.cpp \
     dom/default/PlatformMessagePortChannel.cpp \
-    editing/AppendNodeCommand.cpp \
-    editing/ApplyBlockElementCommand.cpp \
-    editing/ApplyStyleCommand.cpp \
-    editing/BreakBlockquoteCommand.cpp \
-    editing/CompositeEditCommand.cpp \
-    editing/CreateLinkCommand.cpp \
-    editing/DeleteButtonController.cpp \
-    editing/DeleteButton.cpp \
-    editing/DeleteFromTextNodeCommand.cpp \
-    editing/DeleteSelectionCommand.cpp \
-    editing/EditCommand.cpp \
-    editing/EditingStyle.cpp \
-    editing/Editor.cpp \
-    editing/EditorCommand.cpp \
-    editing/FormatBlockCommand.cpp \
-    editing/htmlediting.cpp \
-    editing/HTMLInterchange.cpp \
-    editing/IndentOutdentCommand.cpp \
-    editing/InsertIntoTextNodeCommand.cpp \
-    editing/InsertLineBreakCommand.cpp \
-    editing/InsertListCommand.cpp \
-    editing/InsertNodeBeforeCommand.cpp \
-    editing/InsertParagraphSeparatorCommand.cpp \
-    editing/InsertTextCommand.cpp \
-    editing/JoinTextNodesCommand.cpp \
-    editing/markup.cpp \
-    editing/MarkupAccumulator.cpp \
-    editing/MergeIdenticalElementsCommand.cpp \
-    editing/ModifySelectionListLevel.cpp \
-    editing/MoveSelectionCommand.cpp \
-    editing/RemoveCSSPropertyCommand.cpp \
-    editing/RemoveFormatCommand.cpp \
-    editing/RemoveNodeCommand.cpp \
-    editing/RemoveNodePreservingChildrenCommand.cpp \
-    editing/ReplaceNodeWithSpanCommand.cpp \
-    editing/ReplaceSelectionCommand.cpp \
-    editing/SelectionController.cpp \
-    editing/SetNodeAttributeCommand.cpp \
-    editing/SmartReplaceICU.cpp \
-    editing/SpellChecker.cpp \
-    editing/SpellingCorrectionController.cpp \
-    editing/SplitElementCommand.cpp \
-    editing/SplitTextNodeCommand.cpp \
-    editing/SplitTextNodeContainingElementCommand.cpp \
-    editing/TextCheckingHelper.cpp \
-    editing/TextIterator.cpp \
-    editing/TypingCommand.cpp \
-    editing/UnlinkCommand.cpp \
-    editing/VisiblePosition.cpp \
-    editing/VisibleSelection.cpp \
-    editing/visible_units.cpp \
-    editing/WrapContentsInDummySpanCommand.cpp \
     fileapi/Blob.cpp \
     fileapi/BlobURL.cpp \
     fileapi/File.cpp \
@@ -651,85 +837,17 @@ SOURCES += \
     html/FileInputType.cpp \
     html/FormAssociatedElement.cpp \
     html/FormDataList.cpp \
-    html/HTMLAllCollection.cpp \
     html/HTMLAnchorElement.cpp \
-    html/HTMLAppletElement.cpp \
-    html/HTMLAreaElement.cpp \
-    html/HTMLBRElement.cpp \
-    html/HTMLBaseElement.cpp \
-    html/HTMLBaseFontElement.cpp \
-    html/HTMLBlockquoteElement.cpp \
-    html/HTMLBodyElement.cpp \
-    html/HTMLButtonElement.cpp \
+    html/HTMLAllCollection.cpp \
     html/HTMLCanvasElement.cpp \
     html/HTMLCollection.cpp \
-    html/HTMLDListElement.cpp \
-    html/HTMLDataListElement.cpp \
-    html/HTMLDirectoryElement.cpp \
-    html/HTMLDetailsElement.cpp \
-    html/HTMLDivElement.cpp \
     html/HTMLDocument.cpp \
-    html/HTMLElement.cpp \
-    html/HTMLEmbedElement.cpp \
-    html/HTMLFieldSetElement.cpp \
-    html/HTMLFontElement.cpp \
     html/HTMLFormCollection.cpp \
-    html/HTMLFormControlElement.cpp \
-    html/HTMLFormElement.cpp \
-    html/HTMLFrameElement.cpp \
-    html/HTMLFrameElementBase.cpp \
-    html/HTMLFrameOwnerElement.cpp \
-    html/HTMLFrameSetElement.cpp \
-    html/HTMLHRElement.cpp \
-    html/HTMLHeadElement.cpp \
-    html/HTMLHeadingElement.cpp \
-    html/HTMLHtmlElement.cpp \
-    html/HTMLIFrameElement.cpp \
-    html/HTMLImageElement.cpp \
     html/HTMLImageLoader.cpp \
-    html/HTMLInputElement.cpp \
-    html/HTMLIsIndexElement.cpp \
-    html/HTMLKeygenElement.cpp \
-    html/HTMLLIElement.cpp \
-    html/HTMLLabelElement.cpp \
-    html/HTMLLegendElement.cpp \
-    html/HTMLLinkElement.cpp \
-    html/HTMLMapElement.cpp \
-    html/HTMLMarqueeElement.cpp \
-    html/HTMLMenuElement.cpp \
-    html/HTMLMetaElement.cpp \
-    html/HTMLMeterElement.cpp \
-    html/HTMLModElement.cpp \
     html/HTMLNameCollection.cpp \
-    html/HTMLOListElement.cpp \
-    html/HTMLObjectElement.cpp \
-    html/HTMLOptGroupElement.cpp \
-    html/HTMLOptionElement.cpp \
     html/HTMLOptionsCollection.cpp \
-    html/HTMLOutputElement.cpp \
-    html/HTMLParagraphElement.cpp \
-    html/HTMLParamElement.cpp \
-    html/HTMLParserErrorCodes.cpp \
     html/HTMLPlugInElement.cpp \
-    html/HTMLPlugInImageElement.cpp \
-    html/HTMLPreElement.cpp \
-    html/HTMLProgressElement.cpp \
-    html/HTMLQuoteElement.cpp \
-    html/HTMLScriptElement.cpp \
-    html/HTMLSelectElement.cpp \
-    html/HTMLStyleElement.cpp \
-    html/HTMLSummaryElement.cpp \
-    html/HTMLTableCaptionElement.cpp \
-    html/HTMLTableCellElement.cpp \
-    html/HTMLTableColElement.cpp \
-    html/HTMLTableElement.cpp \
-    html/HTMLTablePartElement.cpp \
-    html/HTMLTableRowElement.cpp \
     html/HTMLTableRowsCollection.cpp \
-    html/HTMLTableSectionElement.cpp \
-    html/HTMLTextAreaElement.cpp \
-    html/HTMLTitleElement.cpp \
-    html/HTMLUListElement.cpp \
     html/HTMLViewSourceDocument.cpp \
     html/HiddenInputType.cpp \
     html/ImageData.cpp \
@@ -1075,108 +1193,7 @@ SOURCES += \
     plugins/PluginPackage.cpp \
     plugins/PluginStream.cpp \
     plugins/PluginView.cpp \
-    rendering/AutoTableLayout.cpp \
-    rendering/break_lines.cpp \
-    rendering/BidiRun.cpp \
-    rendering/CounterNode.cpp \
-    rendering/EllipsisBox.cpp \
-    rendering/FixedTableLayout.cpp \
-    rendering/HitTestResult.cpp \
-    rendering/InlineBox.cpp \
-    rendering/InlineFlowBox.cpp \
-    rendering/InlineTextBox.cpp \
-    rendering/LayoutState.cpp \
-    rendering/RenderApplet.cpp \
-    rendering/RenderArena.cpp \
-    rendering/RenderBlock.cpp \
-    rendering/RenderBlockLineLayout.cpp \
-    rendering/RenderBox.cpp \
-    rendering/RenderBoxModelObject.cpp \
-    rendering/RenderBR.cpp \
-    rendering/RenderButton.cpp \
-    rendering/RenderCombineText.cpp \
-    rendering/RenderCounter.cpp \
-    rendering/RenderDetails.cpp \
-    rendering/RenderDetailsMarker.cpp \
-    rendering/RenderEmbeddedObject.cpp \
-    rendering/RenderFieldset.cpp \
-    rendering/RenderFileUploadControl.cpp \
-    rendering/RenderFlexibleBox.cpp \
-    rendering/RenderFrame.cpp \
-    rendering/RenderFrameBase.cpp \
-    rendering/RenderFrameSet.cpp \
-    rendering/RenderHTMLCanvas.cpp \
-    rendering/RenderIFrame.cpp \
-    rendering/RenderImage.cpp \
-    rendering/RenderImageResource.cpp \
-    rendering/RenderImageResourceStyleImage.cpp \
-    rendering/RenderInline.cpp \
-    rendering/RenderLayer.cpp \
     rendering/RenderLayerBacking.cpp \
-    rendering/RenderLayerCompositor.cpp \
-    rendering/RenderLineBoxList.cpp \
-    rendering/RenderListBox.cpp \
-    rendering/RenderListItem.cpp \
-    rendering/RenderListMarker.cpp \
-    rendering/RenderMarquee.cpp \
-    rendering/RenderMenuList.cpp \
-    rendering/RenderMeter.cpp \
-    rendering/RenderObject.cpp \
-    rendering/RenderObjectChildList.cpp \
-    rendering/RenderPart.cpp \
-    rendering/RenderProgress.cpp \
-    rendering/RenderQuote.cpp \
-    rendering/RenderReplaced.cpp \
-    rendering/RenderReplica.cpp \
-    rendering/RenderRuby.cpp \
-    rendering/RenderRubyBase.cpp \
-    rendering/RenderRubyRun.cpp \
-    rendering/RenderRubyText.cpp \
-    rendering/RenderScrollbar.cpp \
-    rendering/RenderScrollbarPart.cpp \
-    rendering/RenderScrollbarTheme.cpp \
-    rendering/RenderSlider.cpp \
-    rendering/RenderSummary.cpp \
-    rendering/RenderTable.cpp \
-    rendering/RenderTableCell.cpp \
-    rendering/RenderTableCol.cpp \
-    rendering/RenderTableRow.cpp \
-    rendering/RenderTableSection.cpp \
-    rendering/RenderText.cpp \
-    rendering/RenderTextControl.cpp \
-    rendering/RenderTextControlMultiLine.cpp \
-    rendering/RenderTextControlSingleLine.cpp \
-    rendering/RenderTextFragment.cpp \
-    rendering/RenderTheme.cpp \
-    rendering/RenderTreeAsText.cpp \
-    rendering/RenderView.cpp \
-    rendering/RenderWidget.cpp \
-    rendering/RenderWordBreak.cpp \
-    rendering/RootInlineBox.cpp \
-    rendering/ScrollBehavior.cpp \
-    rendering/ShadowElement.cpp \
-    rendering/TransformState.cpp \
-    rendering/style/ContentData.cpp \
-    rendering/style/CounterDirectives.cpp \
-    rendering/style/FillLayer.cpp \
-    rendering/style/KeyframeList.cpp \
-    rendering/style/NinePieceImage.cpp \
-    rendering/style/QuotesData.cpp \
-    rendering/style/RenderStyle.cpp \
-    rendering/style/ShadowData.cpp \
-    rendering/style/StyleBackgroundData.cpp \
-    rendering/style/StyleBoxData.cpp \
-    rendering/style/StyleCachedImage.cpp \
-    rendering/style/StyleFlexibleBoxData.cpp \
-    rendering/style/StyleGeneratedImage.cpp \
-    rendering/style/StyleInheritedData.cpp \
-    rendering/style/StyleMarqueeData.cpp \
-    rendering/style/StyleMultiColData.cpp \
-    rendering/style/StyleRareInheritedData.cpp \
-    rendering/style/StyleRareNonInheritedData.cpp \
-    rendering/style/StyleSurroundData.cpp \
-    rendering/style/StyleTransformData.cpp \
-    rendering/style/StyleVisualData.cpp \
     testing/Internals.cpp \
     xml/DOMParser.cpp \
     xml/XMLHttpRequest.cpp \
@@ -3130,7 +3147,6 @@ contains(DEFINES, ENABLE_SVG=1) {
         rendering/style/SVGRenderStyle.cpp \
         rendering/style/SVGRenderStyleDefs.cpp \
         rendering/PointerEventsHitRules.cpp \
-        rendering/svg/RenderSVGPath.cpp \
         svg/animation/SMILTime.cpp \
         svg/animation/SMILTimeContainer.cpp \
         svg/animation/SVGSMILElement.cpp \
@@ -3140,9 +3156,7 @@ contains(DEFINES, ENABLE_SVG=1) {
         svg/graphics/SVGImage.cpp \
         svg/properties/SVGPathSegListPropertyTearOff.cpp
 
-    linux-g++*:CONFIG(debug, debug|release):isEqual(QT_ARCH,i386) {
-         # Using all in one files to avoid memory exhaustion
-         # during the linking phase.
+    CONFIG(debug, debug|release) {
          SOURCES += \
               rendering/svg/RenderSVGAllInOne.cpp \
               svg/SVGAllInOne.cpp
@@ -3157,6 +3171,7 @@ contains(DEFINES, ENABLE_SVG=1) {
               rendering/svg/RenderSVGInline.cpp \
               rendering/svg/RenderSVGInlineText.cpp \
               rendering/svg/RenderSVGModelObject.cpp \
+              rendering/svg/RenderSVGPath.cpp \
               rendering/svg/RenderSVGResource.cpp \
               rendering/svg/RenderSVGResourceClipper.cpp \
               rendering/svg/RenderSVGResourceContainer.cpp \
