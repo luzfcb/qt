@@ -135,6 +135,13 @@ qmakeclean.commands += (cd qmake && $(MAKE) clean)
 QMAKE_EXTRA_TARGETS += qmakeclean
 CLEAN_DEPS += qmakeclean
 
+CONFIG += separate_debug_info
+CONFIG += force_debug_info
+QMAKE_CXXFLAGS_RELEASE += /Zi 
+QMAKE_CXXFLAGS_RELEASE += /Od
+QMAKE_LFLAGS_RELEASE += /DEBUG
+
+
 CONFIG -= qt
 
 ### installations ####
